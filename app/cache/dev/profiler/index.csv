@@ -13,3 +13,4 @@ beba64,::1,POST,http://localhost:8888/administration/web/app_dev.php/seatseller/
 df1889,::1,GET,http://localhost:8888/administration/web/app_dev.php/seatseller/23/account,1556283319,,200
 2c4290,::1,GET,http://localhost:8888/administration/web/app_dev.php/dist/img/user2-160x160.jpg,1556283321,01f506,200
 01f506,::1,GET,http://localhost:8888/administration/web/app_dev.php/dist/img/user2-160x160.jpg,1556283321,,404
+a235a6,127.0.0.1,GET,http://localhost:8000/login,1562585104,,200

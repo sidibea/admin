@@ -109,11 +109,11 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
-    <parameter key="database_host">diamondbridge.net</parameter>
-    <parameter key="database_port">null</parameter>
-    <parameter key="database_name">diamoc8x_tm</parameter>
-    <parameter key="database_user">diamoc8x_tm</parameter>
-    <parameter key="database_password">sorofing</parameter>
+    <parameter key="database_host">127.0.0.1</parameter>
+    <parameter key="database_port">8889</parameter>
+    <parameter key="database_name">nextbus</parameter>
+    <parameter key="database_user">root</parameter>
+    <parameter key="database_password">root</parameter>
     <parameter key="mailer_transport">smtp</parameter>
     <parameter key="mailer_host">mail.next-bus.net</parameter>
     <parameter key="mailer_user">noreply@next-bus.net</parameter>
@@ -606,7 +606,7 @@
     <parameter key="assetic.write_to">/Applications/MAMP/htdocs/administration/app/../web</parameter>
     <parameter key="assetic.variables" type="collection"/>
     <parameter key="assetic.java.bin">/usr/bin/java</parameter>
-    <parameter key="assetic.node.bin">/usr/bin/node</parameter>
+    <parameter key="assetic.node.bin">/usr/local/bin/node</parameter>
     <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
     <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
     <parameter key="assetic.reactjsx.bin">/usr/bin/jsx</parameter>
@@ -2020,7 +2020,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5cc2ff1e742869.31479603</argument>
+            <argument>5d2328075a9145.41042355</argument>
           </service>
         </argument>
       </argument>
@@ -2322,7 +2322,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5cc2ff1e742869.31479603</argument>
+            <argument>5d2328075a9145.41042355</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2805,11 +2805,11 @@
     <service id="doctrine.dbal.default_connection" class="Doctrine\DBAL\Connection">
       <argument type="collection">
         <argument key="driver">pdo_mysql</argument>
-        <argument key="host">diamondbridge.net</argument>
-        <argument key="port">null</argument>
-        <argument key="dbname">diamoc8x_tm</argument>
-        <argument key="user">diamoc8x_tm</argument>
-        <argument key="password">sorofing</argument>
+        <argument key="host">127.0.0.1</argument>
+        <argument key="port">8889</argument>
+        <argument key="dbname">nextbus</argument>
+        <argument key="user">root</argument>
+        <argument key="password">root</argument>
         <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
         <argument key="defaultTableOptions" type="collection"/>

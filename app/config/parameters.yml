@@ -1,10 +1,10 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: diamondbridge.net
-    database_port: null
-    database_name: diamoc8x_tm
-    database_user: diamoc8x_tm
-    database_password: sorofing
+    database_host: 127.0.0.1
+    database_port: 8889
+    database_name: nextbus
+    database_user: root
+    database_password: root
     mailer_transport: smtp
     mailer_host: mail.next-bus.net
     mailer_user: noreply@next-bus.net

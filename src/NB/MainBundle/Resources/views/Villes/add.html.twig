@@ -1,0 +1,113 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Compagnie  {{ parent() }} {% endblock %}
+ {% block pagestyle %}
+     <!-- iCheck for checkboxes and radio inputs -->
+     <link rel="stylesheet" href="{{ absolute_url(asset('assets/plugins/iCheck/all.css')) }}">
+ {% endblock %}
+
+{% block contentheader %}
+    <h1>
+        Ville
+        <small>Ajouter une ville</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('nb_main_homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li class="active">ville</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Nouvelle ville</h3>
+                </div>
+                {{ form_start(form, {'attr': {'id': '', 'class' : 'form-horizontal' }}) }}
+
+                {# Les erreurs générales du formulaire. #}
+                {{ form_errors(form) }}
+                <div class="box-body">
+
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-institution"></i></span>
+                                    {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder' : 'Nom de la ville' }}) }}
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div> <br>
+                        <!-- /.row -->
+
+
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder' : 'Adresse de la compagnie' }}) }}
+                                </div>
+                            </div>
+                        </div><br>
+                        <!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Logo</label>
+                                    {{ form_widget(form.photo, {'attr': {'class': 'file', 'placeholder' : '' }}) }}
+                                </div>
+                            </div>
+                        </div><br>
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Activée ?</label>
+                                    {{ form_widget(form.isActive, {'attr': {'class': 'minimal', 'placeholder' : '' }}) }}
+                                </div>
+                            </div>
+                        </div><br>
+                        <!-- /.row -->
+
+
+                    </div>
+
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info">Enregistrer</button>
+
+                    <a href="{{ path('nb_main_liste_des_compagnie') }}" class="btn btn-default pull-right">Annuler</a>
+                </div>
+                {{ form_rest(form) }}
+
+                {# Fermeture de la balise <form> du formulaire HTML #}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block pagescript %}
+    <!-- iCheck 1.0.1 -->
+    <script src="{{ absolute_url(asset('assets/plugins/iCheck/icheck.min.js')) }}"></script>
+{% endblock %}
+
+
+{% block script %}
+    <!-- page script -->
+    <script>
+        $(function () {
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            });
+        });
+    </script>
+
+{% endblock %}

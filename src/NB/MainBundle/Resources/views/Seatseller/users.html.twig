@@ -1,0 +1,105 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Seatseller  {{ parent() }} {% endblock %}
+ {% block pagestyle %}
+     <link rel="stylesheet" href="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.css')) }}">
+ {% endblock %}
+
+{% block contentheader %}
+    <h1>
+        Axes
+        <small>Liste des Seatsellers</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('nb_main_homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li class="active">Seatsellers</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Utilisateurs de {{ seatseller.nomAgence }} ({{ seatseller.users|length }})</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class=" pull-right">
+                    <a href="{{ path('nb_main_seatseller_users_nouveau',{'seatseller_id': seatseller.id}) }}" class="btn btn-app">
+                        <i class="fa fa-plus"></i> Ajouter un utilisateur
+                    </a>
+                </div><br>
+                <table id="company" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nom </th>
+                        <th> Prenom</th>
+                        <th>Email/Nom d'utilisateur
+                        <th> Derniere connexion</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, val in seatseller.users %}
+                        <tr>
+                            <td width="10">{{ val.id }}</td>
+                            <td><b>{{ val.nom }}</b></td>
+                            <td><b>{{ val.prenom }}</b></td>
+                            <td><b>{{ val.email }}</b></td>
+                            <td><b>{{ val.lastLogin | date('d M Y h:i:s') }}</b></td>
+
+                            <td>
+                                <div class="text-center">
+                                    <a href="{{ path('nb_main_modifier_seatseller', {'id': val.id}) }}" class="btn btn-social-icon btn-bitbucket"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ path('nb_main_modifier_seatseller', {'id': val.id}) }}" class="btn btn-social-icon btn-flickr"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ path('nb_main_modifier_seatseller', {'id': val.id}) }}" class="btn btn-social-icon btn-twitter"><i class="fa fa-users"></i></a>
+                                    <a href=""  onclick=" return confirm('Voulez vous vraiment cette ligne ?')" class="btn btn-social-icon btn-google"><i class="fa fa-times"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Nom </th>
+                        <th> Prenom</th>
+                        <th>Email/Nom d'utilisateur
+                        <th> Derniere connexion</th>
+                        <th>Options</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block pagescript %}
+        <!-- DataTables -->
+        <script src="{{ absolute_url(asset('assets/plugins/datatables/jquery.dataTables.min.js')) }}"></script>
+        <script src="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.min.js')) }}"></script>
+    {% endblock %}
+
+
+    {% block script %}
+    <!-- page script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#company').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
+
+{% endblock %}

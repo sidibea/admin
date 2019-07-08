@@ -1,0 +1,163 @@
+nb_main_homepage:
+    path:     /
+    defaults: { _controller: NBMainBundle:Main:index }
+nb_main_liste_des_compagnie:
+    path:     /compagnie/liste-des-compagnie
+    defaults: { _controller: NBMainBundle:Compagnie:list }
+nb_main_ajouter_compagnie:
+    path:     /compagnie/ajouter-une-compagnie
+    defaults: { _controller: NBMainBundle:Compagnie:add }
+nb_main_modifier_compagnie:
+    path:     /compagnie/modifier-une-compagnie/{id}
+    defaults: { _controller: NBMainBundle:Compagnie:edit }
+nb_main_supprimer_compagnie:
+    path:     /compagnie/supprimer-une-compagnie/{id}
+    defaults: { _controller: NBMainBundle:Compagnie:delete }
+nb_main_liste_utilisateur_compagnie:
+    path:     /compagnie/liste-utilisateur-compagnie/{compagnie_id}
+    defaults: { _controller: NBMainBundle:Compagnie:users }
+nb_main_ajouter_compagnie_utilisateur:
+    path:     /compagnie/liste-utilisateur-compagnie/{compagnie_id}/nouveau
+    defaults: { _controller: NBMainBundle:Compagnie:usersAdd }
+
+nb_main_liste_seatseller:
+    path:     /seatSeller/liste-seatseller
+    defaults: { _controller: NBMainBundle:SeatSeller:list }
+nb_main_statistique_seatseller:
+    path:     /statistiques/seatseller
+    defaults: { _controller: NBMainBundle:Statistiques:seatseller }
+nb_main_ajouter_seatseller:
+    path:     /seatSeller/nouveau-seatseller
+    defaults: { _controller: NBMainBundle:SeatSeller:add }
+nb_main_modifier_seatseller:
+    path:     /seatSeller/modifier-seatseller/{id}
+    defaults: { _controller: NBMainBundle:SeatSeller:edit }
+nb_main_liste_utilisateur_seatseller:
+    path:     /seatSeller/utilisateur-seatseller/{seatseller_id}
+    defaults: { _controller: NBMainBundle:SeatSeller:users }
+nb_main_seatseller_users_nouveau:
+    path:     /seatseller/{seatseller_id}/utilisateurs/nouveau
+    defaults: { _controller: NBMainBundle:SeatSeller:usersAdd }
+nb_main_seatseller_solde_compte:
+    path:     /seatseller/{seatseller_id}/account
+    defaults: { _controller: NBMainBundle:SeatSeller:account }
+
+nb_main_liste_des_axes:
+    path:     /axes/liste-des-axes
+    defaults: { _controller: NBMainBundle:Axes:list }
+nb_main_ajouter_axes:
+    path:     /axes/ajouter-des-axes
+    defaults: { _controller: NBMainBundle:Axes:add }
+nb_main_modifier_axes:
+    path:     /axes/modifier-un-axe/{id}
+    defaults: { _controller: NBMainBundle:Axes:edit }
+nb_main_liste_des_villes:
+    path:     /villes/liste-des-villes
+    defaults: { _controller: NBMainBundle:Villes:list }
+nb_main_ajouter_des_villes:
+    path:     /viles/ajouter-une-ville
+    defaults: { _controller: NBMainBundle:Villes:add }
+nb_main_modifier_villes:
+    path:     /villes/modifier-une-ville/{id}
+    defaults: { _controller: NBMainBundle:Villes:edit }
+nb_main_liste_des_voyages:
+    path:     /voyages/liste-des-voyages
+    defaults: { _controller: NBMainBundle:Voyages:list }
+nb_main_ajouter_des_voyages:
+    path:     /voyages/ajouter-des-voyages
+    defaults: { _controller: NBMainBundle:Voyages:add }
+nb_main_modifier_voyages:
+    path:     /voyages/modifier-un-voyage/{id}
+    defaults: { _controller: NBMainBundle:Voyages:edit }
+
+nb_main_liste_des_point_embarquement:
+    path:     /voyages/point-embarquement
+    defaults: { _controller: NBMainBundle:Point:list }
+nb_main_ajouter_des_point_embarquement:
+    path:     /voyages/point-embarquement/nouveau
+    defaults: { _controller: NBMainBundle:Point:add }
+nb_main_modifier_des_point_embarquement:
+    path:     /voyages/modifier-point-embarquement/{id}
+    defaults: { _controller: NBMainBundle:Point:edit }
+
+nb_main_liste_gestion_des_promotions:
+    path:     /promotions/liste-gestion-des-promotions
+    defaults: { _controller: NBMainBundle:Promotions:list }
+nb_main_ajouter_gestion_des_promotions:
+    path:     /promotions/ajouter-gestion-des-promotions
+    defaults: { _controller: NBMainBundle:Promotions:add }
+nb_main_modifier_gestion_des_promotions:
+    path:     /promotions/modifier-une-promotion/{id}
+    defaults: { _controller: NBMainBundle:Promotions:edit }
+
+nb_main_liste_termes_et_conditions:
+    path:     /termes_conditions/liste-termes-et-conditions
+    defaults: { _controller: NBMainBundle:TermesConditions:list }
+nb_main_modifier_termes_et_conditions:
+    path:     /termes_conditions/modifier-termes-et-conditions/{id}
+    defaults: { _controller: NBMainBundle:TermesConditions:edit }
+nb_main_liste_de_confidentialite:
+    path:     /confidentialite/liste-des-confidentialites
+    defaults: { _controller: NBMainBundle:Confidentialite:list }
+nb_main_modifier_confidentialite:
+    path:     /confidentialite/modifier-confidentialites/{id}
+    defaults: { _controller: NBMainBundle:Confidentialite:edit }
+nb_main_liste_blog:
+    path:     /blog/liste-blog
+    defaults: { _controller: NBMainBundle:Blog:list }
+nb_main_modifier_blog:
+    path:     /blog/modifier-blog
+    defaults: { _controller: NBMainBundle:Blog:edit }
+nb_main_liste_professionel:
+    path:     /professionel/liste-professionel
+    defaults: { _controller: NBMainBundle:Professionel:list }
+nb_main_modifier_professionel:
+    path:     /professionel/modifier-professionel
+    defaults: { _controller: NBMainBundle:Professionel:edit }
+nb_main_liste_modification_voyage:
+    path:     /modif_voyage/liste-modification-voyage
+    defaults: { _controller: NBMainBundle:ModificationVoyage:list }
+nb_main_modifier_modification_voyage:
+    path:     /modif_voyage/modifier-modification-voyage
+    defaults: { _controller: NBMainBundle:ModificationVoyage:edit }
+nb_main_liste_annulation_voyage:
+    path:     /annul_voyage/liste-annulation-voyage
+    defaults: { _controller: NBMainBundle:AnnulationVoyage:list }
+nb_main_modifier_annulation_voyage:
+    path:     /annul_voyage/modifier-annulation-voyage
+    defaults: { _controller: NBMainBundle:annulationVoyage:edit }
+
+
+nb_main_modifier_professionel:
+    path:     /professionel/modifier-professionel
+    defaults: { _controller: NBMainBundle:Professionel:edit }
+
+nb_main_termes_et_conditions:
+    path:     /cms/termes-et-conditions
+    defaults: { _controller: NBMainBundle:CMS:TermesConditions }
+nb_main_confidentialite:
+    path:     /cms/confidentialites
+    defaults: { _controller: NBMainBundle:CMS:Confidentialite }
+nb_main_blog:
+    path:     /cms/blog
+    defaults: { _controller: NBMainBundle:CMS:Blog }
+nb_main_professionel:
+    path:     /cms/professionel
+    defaults: { _controller: NBMainBundle:CMS:Professionel }
+nb_main_modification_voyage:
+    path:     /cms/modification-voyage
+    defaults: { _controller: NBMainBundle:CMS:ModificationVoyage }
+nb_main_annulation_voyage:
+    path:     /cms/annulation-voyage
+    defaults: { _controller: NBMainBundle:CMS:AnnulationVoyage }
+nb_main_liste_gestion_newsletter:
+    path:     /gest_newsletter/liste-gestion-newsletter
+    defaults: { _controller: NBMainBundle:GestionNewsletter:list }
+nb_main_modifier_gestion_newsletter:
+    path:     /gest_newsletter/modifier-gestion-newsletter
+    defaults: { _controller: NBMainBundle:GestionNewsletter:edit }
+
+
+
+
+

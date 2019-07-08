@@ -1,0 +1,103 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Seatseller  {{ parent() }} {% endblock %}
+ {% block pagestyle %}
+     <link rel="stylesheet" href="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.css')) }}">
+ {% endblock %}
+
+{% block contentheader %}
+    <h1>
+        Axes
+        <small>Liste des Seatsellers</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('nb_main_homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li class="active">Seatsellers</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Seatseller ({{ list|length }})</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
+                <table id="company" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Imm.</th>
+                        <th>Nom</th>
+                        <th>Ville</th>
+                        <th>Quartier</th>
+                        <th>Email</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, val in list %}
+                        <tr>
+                            <td width="10">{{ val.id }}</td>
+                            <td><b>{{ val.numeroNina }}</b></td>
+                            <td>{{ val.nom }} {{ val.prenom }}</td>
+                            <td>{{ val.ville }}</td>
+                            <td>{{  val.quartier.nom }}</td>
+                            <td>{{ val.email }}</td>
+
+                            <td>
+                                <div class="text-center">
+                                    <a href="{{ path('nb_main_modifier_seatseller', {'id': val.id}) }}" class="btn btn-social-icon btn-bitbucket"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ path('nb_main_seatseller_solde_compte', {'seatseller_id': val.id}) }}" class="btn btn-social-icon btn-flickr"><i class="fa fa-money"></i></a>
+                                    <a href=""  onclick=" return confirm('Voulez vous vraiment cette ligne ?')" class="btn btn-social-icon btn-google"><i class="fa fa-times"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Imm.</th>
+                        <th>Nom</th>
+                        <th>Ville</th>
+                        <th>Quartier</th>
+                        <th>Email</th>
+                        <th>Options</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block pagescript %}
+        <!-- DataTables -->
+        <script src="{{ absolute_url(asset('assets/plugins/datatables/jquery.dataTables.min.js')) }}"></script>
+        <script src="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.min.js')) }}"></script>
+    {% endblock %}
+
+
+    {% block script %}
+    <!-- page script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#company').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
+
+{% endblock %}

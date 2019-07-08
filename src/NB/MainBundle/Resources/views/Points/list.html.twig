@@ -1,0 +1,106 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Voyages  {{ parent() }} {% endblock %}
+ {% block pagestyle %}
+     <link rel="stylesheet" href="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.css')) }}">
+ {% endblock %}
+
+{% block contentheader %}
+    <h1>
+        Voyages
+        <small>Liste des Point d'embarquement</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('nb_main_homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li class="active">Voyages</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Points d'embarquement ({{ list|length }})</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class=" pull-right">
+                    <a href="{{ path('nb_main_ajouter_des_point_embarquement') }}" class="btn btn-app">
+                        <i class="fa fa-plus"></i> Nouveau point
+                    </a>
+                </div><br>
+                <table id="company" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            Nom
+                        </th>
+                        <th>Longitude </th>
+                        <th>Lattitude </th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for key, val in list %}
+                        <tr>
+                            <td width="10">{{ val.id }}</td>
+                            <td><b>{{ val.nom }}</b></td>
+                            <td>{{ val.longitude }}</td>
+                            <td>{{ val.lattitude }}</td>
+
+
+                            <td>
+                                <div class="text-center">
+                                    <a href="{{ path('nb_main_modifier_des_point_embarquement', {'id': val.id}) }}" class="btn btn-social-icon btn-bitbucket"><i class="fa fa-edit"></i></a>
+                                    <a href=""  onclick=" return confirm('Voulez vous vraiment cette ligne ?')" class="btn btn-social-icon btn-google"><i class="fa fa-times"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            Nom
+                        </th>
+                        <th>Longitude </th>
+                        <th>Lattitude </th>
+                        <th>Options</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block pagescript %}
+        <!-- DataTables -->
+        <script src="{{ absolute_url(asset('assets/plugins/datatables/jquery.dataTables.min.js')) }}"></script>
+        <script src="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.min.js')) }}"></script>
+    {% endblock %}
+
+
+    {% block script %}
+    <!-- page script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#company').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
+
+{% endblock %}

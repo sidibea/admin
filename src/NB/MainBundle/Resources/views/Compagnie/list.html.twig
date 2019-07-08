@@ -1,0 +1,110 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Compagnie  {{ parent() }} {% endblock %}
+ {% block pagestyle %}
+     <link rel="stylesheet" href="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.css')) }}">
+ {% endblock %}
+
+{% block contentheader %}
+    <h1>
+        Compagnies de Transport
+        <small>Liste des Compagnie</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('nb_main_homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li class="active">Compagnie</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Compagnie de Transport ({{ list|length }})</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class=" pull-right">
+                        <a href="{{ path('nb_main_ajouter_compagnie') }}" class="btn btn-app">
+                            <i class="fa fa-plus"></i> Nouvelle compagnie
+                        </a>
+                    </div><br>
+                    <table id="company" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nom</th>
+                            <th>Adresse</th>
+                            <th>Tel.</th>
+                            <th>Email</th>
+                            <th>Com.</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for key, val in list %}
+                                <tr>
+                                    <td width="100"><img src="{{ absolute_url(asset('assets/images/uploads/compagnies/logo/'~val.logo)) }}" width="100" height="80" alt=""/></td>
+                                    <td >{{ val.nom }}</td>
+                                    <td>{{ val.adresse }}</td>
+                                    <td>{{ val.telephone }}</td>
+                                    <td>{{ val.email }}</td>
+                                    <td width="10">{{ val.commission }}</td>
+                                    <td>
+                                        <div class="text-center">
+                                            <a href="{{ path('nb_main_modifier_compagnie', {'id': val.id}) }}" class="btn btn-social-icon btn-bitbucket"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ path('nb_main_supprimer_compagnie', {'id': val.id}) }}"  onclick=" return confirm('Voulez vous vraiment cette ligne ?')" class="btn btn-social-icon btn-google"><i class="fa fa-times"></i></a>
+                                            <a href="{{ path('nb_main_liste_utilisateur_compagnie', {'compagnie_id': val.id}) }}" class="btn btn-social-icon btn-facebook"><i class="fa fa-users"></i></a>
+
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th></th>
+                            <th>Nom</th>
+                            <th>Adresse</th>
+                            <th>Tel.</th>
+                            <th>Email</th>
+                            <th>Commission</th>
+                            <th></th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block pagescript %}
+  <!-- DataTables -->
+  <script src="{{ absolute_url(asset('assets/plugins/datatables/jquery.dataTables.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.min.js')) }}"></script>
+{% endblock %}
+
+
+{% block script %}
+        <!-- page script -->
+        <script>
+            $(function () {
+                $("#example1").DataTable();
+                $('#company').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false
+                });
+            });
+        </script>
+
+{% endblock %}

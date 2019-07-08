@@ -1,0 +1,74 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Politique de confidentialié  {{ parent() }} {% endblock %}
+ {% block pagestyle %}
+     <!-- iCheck for checkboxes and radio inputs -->
+     <link rel="stylesheet" href="{{ absolute_url(asset('assets/plugins/iCheck/all.css')) }}">
+ {% endblock %}
+
+{% block contentheader %}
+    <h1>
+        Gestion de contenu
+        <small>Politique de confidentialité</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('nb_main_homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li class="active">Gestion de contenu</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Politique de confidentialité</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                {{ form_start(form, {'attr': { 'role' : 'form' }}) }}
+
+                {# Les erreurs générales du formulaire. #}
+                {{ form_errors(form) }}
+                <div class="box-body">
+                    <div class="form-group">
+                        <label></label>
+                        {{ form_widget(form.politiqueConfidentialite, {'attr': {'class': 'form-control' }}) }}
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </div>
+                {{ form_rest(form) }}
+
+                {# Fermeture de la balise <form> du formulaire HTML #}
+                {{ form_end(form) }}
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+{% endblock %}
+
+{% block pagescript %}
+    <!-- iCheck 1.0.1 -->
+    <script src="{{ absolute_url(asset('assets/plugins/iCheck/icheck.min.js')) }}"></script>
+{% endblock %}
+
+
+{% block script %}
+    <!-- page script -->
+    <script>
+        $(function () {
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            });
+        });
+    </script>
+
+{% endblock %}

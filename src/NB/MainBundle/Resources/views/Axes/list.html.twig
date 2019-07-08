@@ -1,0 +1,122 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Axes  {{ parent() }} {% endblock %}
+ {% block pagestyle %}
+     <link rel="stylesheet" href="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.css')) }}">
+ {% endblock %}
+
+{% block contentheader %}
+    <h1>
+        Axes
+        <small>Liste des axes</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('nb_main_homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li class="active">Axes</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Axes ({{ list|length }})</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class=" pull-right">
+                    <a href="{{ path('nb_main_ajouter_axes') }}" class="btn btn-app">
+                        <i class="fa fa-plus"></i> Nouvel axes
+                    </a>
+                </div><br>
+                <table id="company" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+
+                        </th>
+                        <th>
+                            Axes
+                        </th>
+                        <th>Type</th>
+                        <th>
+                            Distance
+                        </th>
+
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for key, val in list %}
+                        <tr>
+                            <td width="60"><img src="{{ absolute_url(asset('assets/images/uploads/compagnies/photo/'~val.photo)) }}" width="40" height="40" alt=""/></td>
+                            <td><b>{{ val.nom }}</b></td>
+                            <td width="50">
+                                {% if val.type == 0 %}
+                                    <span class="badge bg-blue">Internationale</span>
+                                {% else %}
+                                    <span class="badge bg-green">Nationale</span>
+                                {% endif %}
+                            </td>
+                            <td><b>{{ val.distance }} km</b></td>
+
+                            <td>
+                                <div class="text-center">
+                                    <a href="{{ path('nb_main_modifier_axes', {'id': val.id}) }}" class="btn btn-social-icon btn-bitbucket"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ path('nb_main_supprimer_compagnie', {'id': val.id}) }}"  onclick=" return confirm('Voulez vous vraiment cette ligne ?')" class="btn btn-social-icon btn-google"><i class="fa fa-times"></i></a>
+
+                                </div>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>
+
+                        </th>
+                        <th>
+                            Axes
+                        </th>
+                        <th>Type</th>
+                        <th>
+                            Distance
+                        </th>
+                        <th>Options</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block pagescript %}
+        <!-- DataTables -->
+        <script src="{{ absolute_url(asset('assets/plugins/datatables/jquery.dataTables.min.js')) }}"></script>
+        <script src="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.min.js')) }}"></script>
+    {% endblock %}
+
+
+    {% block script %}
+    <!-- page script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#company').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
+
+{% endblock %}

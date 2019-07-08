@@ -1,0 +1,109 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Promotions  {{ parent() }} {% endblock %}
+ {% block pagestyle %}
+     <link rel="stylesheet" href="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.css')) }}">
+ {% endblock %}
+
+{% block contentheader %}
+    <h1>
+        Promotions
+        <small>Liste des promotions</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('nb_main_homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li class="active">Promotions</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Promotions ({{ list|length }})</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                <div class=" pull-right">
+                    <a href="{{ path('nb_main_ajouter_gestion_des_promotions') }}" class="btn btn-app">
+                        <i class="fa fa-plus"></i> Nouvelle promotion
+                    </a>
+                </div><br>
+                <table id="company" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Code</th>
+                        <th>Compagnie</th>
+                        <th>Axes</th>
+                        <th>Validité</th>
+                        <th>Cible</th>
+                        <th>Reduction</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for key, val in list %}
+                        <tr>
+                            <td width="50"><img src="{{ absolute_url(asset('assets/images/uploads/compagnies/photo/'~val.photo)) }}" width="40" height="40" alt=""/></td>
+                            <td>{{ val.code }}</td>
+                            <td><b>{{ val.compagnie.nom }}</b></td>
+                            <td>{{ val.axes.nom }}</td>
+                            <td>Du {{ val.dateDebut | date('d-m-Y')}} Au {{ val.dateFin | date('d-m-Y') }}</td>
+                            <td>{{ val.canal }}</td>
+                            <td><b>{{ val.montant }} FCFA</b></td>
+                            <td>
+                                <div class="text-center">
+                                    <a href="{{ path('nb_main_modifier_gestion_des_promotions', {'id': val.id}) }}" class="btn btn-social-icon btn-bitbucket"><i class="fa fa-edit"></i></a>
+                                    <a href=""  onclick=" return confirm('Voulez vous vraiment cette ligne ?')" class="btn btn-social-icon btn-google"><i class="fa fa-times"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Code</th>
+                        <th>Compagnie</th>
+                        <th>Axes</th>
+                        <th>Validité</th>
+                        <th>Cible</th>
+                        <th>Reduction</th>
+                        <th></th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+
+{% endblock %}
+
+    {% block pagescript %}
+        <!-- DataTables -->
+        <script src="{{ absolute_url(asset('assets/plugins/datatables/jquery.dataTables.min.js')) }}"></script>
+        <script src="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.min.js')) }}"></script>
+    {% endblock %}
+
+
+    {% block script %}
+        <!-- page script -->
+        <script>
+            $(function () {
+                $("#example1").DataTable();
+                $('#company').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false
+                });
+            });
+        </script>
+
+    {% endblock %}

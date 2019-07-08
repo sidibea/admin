@@ -1,0 +1,182 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Compagnie  {{ parent() }} {% endblock %}
+ {% block pagestyle %}
+     <!-- iCheck for checkboxes and radio inputs -->
+     <link rel="stylesheet" href="{{ absolute_url(asset('assets/plugins/iCheck/all.css')) }}">
+ {% endblock %}
+
+{% block contentheader %}
+    <h1>
+        Compagnies de Transport
+        <small>Ajouter une Compagnie</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('nb_main_homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li class="active">Compagnie</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Nouvelle Compagnie</h3>
+                </div>
+                {{ form_start(form, {'attr': {'id': '', 'class' : 'form-horizontal' }}) }}
+
+                {# Les erreurs générales du formulaire. #}
+                {{ form_errors(form) }}
+                <div class="box-body">
+
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-institution"></i></span>
+                                    {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder' : 'Nom de la compagnie' }}) }}
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-bullhorn"></i></span>
+                                    {{ form_widget(form.slogan, {'attr': {'class': 'form-control', 'placeholder' : 'Slogan de la compagnie' }}) }}
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div> <br>
+                        <!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder' : 'Numero de telephone de la compagnie' }}) }}
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                    {{ form_widget(form.commission, {'attr': {'class': 'form-control', 'placeholder' : 'Commission offerte par la compagnie' }}) }}
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div> <br>
+                        <!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{ form_widget(form.adresse, {'attr': {'class': 'form-control', 'rows': '3', 'placeholder' : 'Adresse de la compagnie' }}) }}
+                                </div>
+                            </div>
+                        </div><br>
+                        <!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa  fa-gg"></i></span>
+                                    {{ form_widget(form.metatitre, {'attr': {'class': 'form-control', 'placeholder' : 'Titre Meta de la compagnie' }}) }}
+                                </div>
+                            </div>
+
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa  fa-commenting"></i></span>
+                                    {{ form_widget(form.metadescription, {'attr': {'class': 'form-control', 'placeholder' : 'Description Meta de la compagnie' }}) }}
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div> <br>
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-hand-pointer-o"></i></span>
+                                    {{ form_widget(form.motCle, {'attr': {'class': 'form-control', 'placeholder' : 'Mot cle pour la recherche de la compagnie' }}) }}
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope "></i></span>
+                                    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder' : 'Adresse Email de la compagnie' }}) }}
+                                </div>
+                            </div>
+                            <!-- /.col -->
+
+                        </div> <br>
+                        <!-- /.row -->
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder' : 'Adresse de la compagnie' }}) }}
+                                </div>
+                            </div>
+                        </div><br>
+                        <!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Logo</label>
+                                    {{ form_widget(form.logo, {'attr': {'class': 'file', 'placeholder' : '' }}) }}
+                                </div>
+                            </div>
+                        </div><br>
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Activée ?</label>
+                                    {{ form_widget(form.isActive, {'attr': {'class': 'minimal', 'placeholder' : '' }}) }}
+                                </div>
+                            </div>
+                        </div><br>
+                        <!-- /.row -->
+
+
+                    </div>
+
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info">Enregistrer</button>
+
+                    <a href="{{ path('nb_main_liste_des_compagnie') }}" class="btn btn-default pull-right">Annuler</a>
+                </div>
+                {{ form_rest(form) }}
+
+                {# Fermeture de la balise <form> du formulaire HTML #}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block pagescript %}
+    <!-- iCheck 1.0.1 -->
+    <script src="{{ absolute_url(asset('assets/plugins/iCheck/icheck.min.js')) }}"></script>
+{% endblock %}
+
+
+{% block script %}
+    <!-- page script -->
+    <script>
+        $(function () {
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            });
+        });
+    </script>
+
+{% endblock %}

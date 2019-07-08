@@ -1,0 +1,119 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} Tableau de Bord  {{ parent() }} {% endblock %}
+
+ {% block pagestyle %}
+     <link rel="stylesheet" href="{{ absolute_url(asset('assets/plugins/datatables/dataTables.bootstrap.css')) }}">
+     <link rel="stylesheet" href="{{ absolute_url(asset('assets/plugins/morris/morris.css')) }}">
+
+ {% endblock %}
+
+{% block contentheader %}
+    <h1>
+        Tableau de Bord
+        <small>Panneau d'administration</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('nb_main_homepage') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li class="active">Tableau de Bord</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-7 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="nav-tabs-custom">
+                <!-- Tabs within a box -->
+                <ul class="nav nav-tabs pull-right">
+                    <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
+                    <li class="pull-left header"><i class="fa fa-inbox"></i> Seatseller</li>
+                </ul>
+                <div class="tab-content no-padding">
+                    <!-- Morris chart - Sales -->
+                    <div class="chart active tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
+                </div>
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </section>
+    </div>
+
+
+
+    <table id="company" class="table table-bordered table-striped">
+        <thead>
+        <tr>
+
+            <th>
+                Nom des passagers
+            </th>
+            <th>
+                Date de voyage
+            </th>
+            <th>
+                Numéro du billet
+            </th>
+            <th>
+                Source
+            </th>
+
+            <th>
+                Date de réservaion
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>
+                Nom des passagers
+            </th>
+            <th>
+                Date de voyage
+            </th>
+            <th>
+                Numéro du billet
+            </th>
+
+            <th>
+                Date de réservaion
+            </th>
+        </tr>
+        </tfoot>
+    </table>
+{% endblock %}
+
+
+        {% block pagescript %}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+            <script src="{{ absolute_url(asset('assets/plugins/morris/morris.min.js')) }}"></script>
+
+        {% endblock %}
+
+        {% block script %}
+            <!-- page script -->
+            <script>
+                $(function () {
+                    'use strict';
+
+                    var donut = new Morris.Donut({
+                        element: 'sales-chart',
+                        resize: true,
+                        colors: ["#3c8dbc", "#f56954", "#00a65a"],
+                        data: [
+                            {label: "Download Sales", value: 12},
+                            {label: "In-Store Sales", value: 30},
+                            {label: "Mail-Order Sales", value: 20}
+                        ],
+                        hideHover: 'auto'
+                    });
+
+
+
+                });
+            </script>
+
+        {% endblock %}
